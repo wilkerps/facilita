@@ -9,6 +9,9 @@ const eventoController = require('../controllers/eventoController');
 router.post('/login', authController.login);
 router.post('/logout', authController.logout);
 
+// Rotas para alteração de senha
+router.post('/reset-password', authController.resetPassword);
+router.post('/forgot-password', authController.forgotPassword);
 
 // Rotas para usuários
 router.post('/usuarios', usuarioController.cadastrarUsuario);

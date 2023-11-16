@@ -29,25 +29,3 @@ function Dashboard() {
 }
 
 export default Dashboard;
-
-// import React, { useState, useEffect } from "react";
-
-// function Dashboard() {
-//   const [userName, setUserName] = useState("");
-
-//   // Lógica para obter o nome do usuário após o login (do local storage, por exemplo)
-//   useEffect(() => {
-//     const loggedInUserName = localStorage.getItem("userName");
-//     if (loggedInUserName) {
-//       setUserName(loggedInUserName);
-//     }
-//   }, []);
-
-//   return (
-//     <div>
-//       <h1>Bem-vindo, {userName || "nome"}!</h1>
-//     </div>
-//   );
-// }
-
-// export default Dashboard;

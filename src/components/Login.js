@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Login.css";
 
 function Login() {
@@ -58,6 +59,7 @@ function Login() {
           Login
         </button>
       </form>
+      <Link to="/passwd">Esqueceu a sua senha? clique e altere-a!</Link>
     </div>
   );
 }
