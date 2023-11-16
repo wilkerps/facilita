@@ -1,20 +1,27 @@
 const express = require('express');
 const router = express.Router();
+const authController = require('../controllers/authController');
 const usuarioController = require('../controllers/usuarioController');
 const eventoController = require('../controllers/eventoController');
 
+// Rotas para login e logout
+
+router.post('/login', authController.login);
+router.post('/logout', authController.logout);
+
+
 // Rotas para usuários
-router.post('/usuarios', usuarioController.cadastrarUsuario); // Criar um novo usuário
-router.get('/usuarios', /* Middleware de autenticação, se necessário */ usuarioController.listarUsuarios); // Listar todos os usuários
-router.get('/usuarios/:id', /* Middleware de autenticação, se necessário */ usuarioController.obterUsuarioPorId); // Obter usuário por ID
-router.put('/usuarios/:id', /* Middleware de autenticação, se necessário */ usuarioController.atualizarUsuario); // Atualizar usuário por ID
-router.delete('/usuarios/:id', /* Middleware de autenticação, se necessário */ usuarioController.removerUsuario); // Remover usuário por ID
+router.post('/usuarios', usuarioController.cadastrarUsuario);
+router.get('/usuarios', usuarioController.listarUsuarios);
+router.get('/usuarios/:id', usuarioController.obterUsuarioPorId);
+router.put('/usuarios/:id', usuarioController.atualizarUsuario);
+router.delete('/usuarios/:id', usuarioController.removerUsuario);
 
 // Rotas para eventos
-router.post('/eventos', eventoController.cadastrarEvento); // Criar um novo evento
-router.get('/eventos', /* Middleware de autenticação, se necessário */ eventoController.listarEventos); // Listar todos os eventos
-router.get('/eventos/:id', /* Middleware de autenticação, se necessário */ eventoController.obterEventoPorId); // Obter evento por ID
-router.put('/eventos/:id', /* Middleware de autenticação, se necessário */ eventoController.atualizarEvento); // Atualizar evento por ID
-router.delete('/eventos/:id', /* Middleware de autenticação, se necessário */ eventoController.removerEvento); // Remover evento por ID
+router.post('/eventos', eventoController.cadastrarEvento);
+router.get('/eventos', eventoController.listarEventos);
+router.get('/eventos/:id', eventoController.obterEventoPorId);
+router.put('/eventos/:id', eventoController.atualizarEvento);
+router.delete('/eventos/:id', eventoController.removerEvento);
 
 module.exports = router;

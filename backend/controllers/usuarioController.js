@@ -1,4 +1,5 @@
 const Usuario = require('../models/Usuario');
+const bcrypt = require('bcrypt');
 
 // Função para cadastrar um novo usuário
 const cadastrarUsuario = async (req, res) => {
@@ -36,10 +37,19 @@ const obterUsuarioPorId = async (req, res) => {
 // Função para atualizar um usuário por ID
 const atualizarUsuario = async (req, res) => {
   try {
+    const { senha } = req.body;
+
+    if (senha) {
+      const hashedPassword = await bcrypt.hash(senha, 10);
+      req.body.senha = hashedPassword;
+    }
+
     const usuario = await Usuario.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    
     if (!usuario) {
       return res.status(404).json({ message: 'Usuário não encontrado' });
     }
+    
     res.status(200).json({ usuario });
   } catch (error) {
     res.status(500).json({ error: error.message });
